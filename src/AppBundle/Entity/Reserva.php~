@@ -1,0 +1,156 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reserva
+ *
+ * @ORM\Table(name="reserva")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservaRepository")
+ */
+class Reserva
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="res_fecha", type="datetimetz")
+     */
+    private $resFecha;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="res_hora", type="time")
+     */
+    private $resHora;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set resFecha
+     *
+     * @param \DateTime $resFecha
+     *
+     * @return Reserva
+     */
+    public function setResFecha($resFecha)
+    {
+        $this->resFecha = $resFecha;
+
+        return $this;
+    }
+
+    /**
+     * Get resFecha
+     *
+     * @return \DateTime
+     */
+    public function getResFecha()
+    {
+        return $this->resFecha;
+    }
+
+    /**
+     * Set resHora
+     *
+     * @param \DateTime $resHora
+     *
+     * @return Reserva
+     */
+    public function setResHora($resHora)
+    {
+        $this->resHora = $resHora;
+
+        return $this;
+    }
+
+    /**
+     * Get resHora
+     *
+     * @return \DateTime
+     */
+    public function getResHora()
+    {
+        return $this->resHora;
+    }
+//---------------------------------------------------------------------
+    /**
+     * @ORM\ManyToOne(targetEntity="Opcion", inversedBy="reservas")
+     * @ORM\JoinColumn(name="id_opcion", referencedColumnName="id")
+     */
+    private $opcion;
+
+    /**
+     * Set opcion
+     *
+     * @param \AppBundle\Entity\Opcion $opcion
+     *
+     * @return Reserva
+     */
+    public function setOpcion(\AppBundle\Entity\Opcion $opcion = null)
+    {
+        $this->opcion = $opcion;
+
+        return $this;
+    }
+
+    /**
+     * Get opcion
+     *
+     * @return \AppBundle\Entity\Opcion
+     */
+    public function getOpcion()
+    {
+        return $this->opcion;
+    }
+//---------------------------------------------------------------------------------------------------------------    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="reservas")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $user;    
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Reserva
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

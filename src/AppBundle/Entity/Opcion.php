@@ -1,0 +1,148 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Opcion
+ *
+ * @ORM\Table(name="opcion")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\OpcionRepository")
+ */
+class Opcion
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opc_nombre", type="string", length=255)
+     */
+    private $opcNombre;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set opcNombre
+     *
+     * @param string $opcNombre
+     *
+     * @return Opcion
+     */
+    public function setOpcNombre($opcNombre)
+    {
+        $this->opcNombre = $opcNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get opcNombre
+     *
+     * @return string
+     */
+    public function getOpcNombre()
+    {
+        return $this->opcNombre;
+    }
+//    ---------------------------------------------------------------------------------------------------------
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Negocio", inversedBy="opciones")
+     * @ORM\JoinColumn(name="id_negocio", referencedColumnName="id")
+     */
+    private $opciones;    
+
+    /**
+     * Set opciones
+     *
+     * @param \AppBundle\Entity\Negocio $opciones
+     *
+     * @return Opcion
+     */
+    public function setOpciones(\AppBundle\Entity\Negocio $opciones = null)
+    {
+        $this->opciones = $opciones;
+
+        return $this;
+    }
+
+    /**
+     * Get opciones
+     *
+     * @return \AppBundle\Entity\Negocio
+     */
+    public function getOpciones()
+    {
+        return $this->opciones;
+    }
+//------------------------------------------------------------------------------
+    /**
+     * @ORM\OneToMany(targetEntity="Disponibilidad", mappedBy="Opcion")
+     * @ORM\OneToMany(targetEntity="Reserva", mappedBy="Opcion")
+     */
+    private $disponibilidades;
+    private $reservas;
+
+    public function __construct()
+    {
+        $this->disponibilidades = new ArrayCollection();
+        $this->reservas = new ArrayCollection();
+    }    
+
+    /**
+     * Add disponibilidade
+     *
+     * @param \AppBundle\Entity\Disponibilidad $disponibilidade
+     *
+     * @return Opcion
+     */
+    public function addDisponibilidade(\AppBundle\Entity\Disponibilidad $disponibilidade)
+    {
+        $this->disponibilidades[] = $disponibilidade;
+
+        return $this;
+    }
+
+    /**
+     * Remove disponibilidade
+     *
+     * @param \AppBundle\Entity\Disponibilidad $disponibilidade
+     */
+    public function removeDisponibilidade(\AppBundle\Entity\Disponibilidad $disponibilidade)
+    {
+        $this->disponibilidades->removeElement($disponibilidade);
+    }
+
+    /**
+     * Get disponibilidades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDisponibilidades()
+    {
+        return $this->disponibilidades;
+    }
+
+    public function __toString(){
+        return (string) $this->id." ".$this->opcNombre;
+    }
+}

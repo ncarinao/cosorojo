@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rubro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rubro.id }}</td>
+            </tr>
+            <tr>
+                <th>Rubnombre</th>
+                <td>{{ rubro.rubNombre }}</td>
+            </tr>
+            <tr>
+                <th>Rubfoto</th>
+                <td>{{ rubro.rubFoto }}</td>
+            </tr>
+            <tr>
+                <th>Rubdireccion</th>
+                <td>{{ rubro.rubDireccion }}</td>
+            </tr>
+            <tr>
+                <th>Rubslug</th>
+                <td>{{ rubro.rubSlug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_rubro_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_rubro_edit', { 'id': rubro.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

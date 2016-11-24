@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Personal
+ *
+ * @ORM\Table(name="personal")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonalRepository")
+ */
+class Personal
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+//----------------------------------------------------------------------------------
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Negocio", inversedBy="personal")
+     * @ORM\JoinColumn(name="id_negocio", referencedColumnName="id")
+     */
+    private $negocio;
+//----------------------------------------------------------------------------------
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="personal")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $user;
+}
+
