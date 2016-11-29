@@ -35,12 +35,6 @@
                         <li>
                             <a href="{{ path('pers_negocio_show', { 'id': negocio.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('pers_negocio_edit', { 'id': negocio.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('pers_opcion_new', { 'id_negocio': negocio.id }) }}">editar opcion</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -48,9 +42,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('pers_negocio_new') }}">Create a new negocio</a>
-        </li>
-    </ul>
 {% endblock %}

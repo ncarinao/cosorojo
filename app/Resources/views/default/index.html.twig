@@ -1,19 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Rubros list</h1>
 
-    <div>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-            <a href="{{ path('fos_user_security_logout') }}">
-                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-            </a>
-        {% else %}
-            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-        {% endif %}
-    </div>
-{% endblock %}
-
-{% block stylesheets %}
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Rubnombre</th>
+            <th>Rubfoto</th>
+            <th>Rubdireccion</th>
+            <th>Rubslug</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rubro in rubros %}
+            <tr>
+                <td>{{ rubro.rubNombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('prueba_rubronego', { 'rubroid': rubro.id }) }}">Elegir</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
