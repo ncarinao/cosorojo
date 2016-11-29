@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Disponibilidads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Disinicioam</th>
+                <th>Disfinam</th>
+                <th>Disiniciopm</th>
+                <th>Disfinpm</th>
+                <th>Disdia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for disponibilidad in disponibilidads %}
+            <tr>
+                <td><a href="{{ path('pers_disponibilidad_show', { 'id': disponibilidad.id }) }}">{{ disponibilidad.id }}</a></td>
+                <td>{% if disponibilidad.disInicioAm %}{{ disponibilidad.disInicioAm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if disponibilidad.disFinAm %}{{ disponibilidad.disFinAm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if disponibilidad.disInicioPm %}{{ disponibilidad.disInicioPm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if disponibilidad.disFinPm %}{{ disponibilidad.disFinPm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ disponibilidad.disDia }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pers_disponibilidad_show', { 'id': disponibilidad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pers_disponibilidad_edit', { 'id': disponibilidad.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pers_disponibilidad_new') }}">Create a new disponibilidad</a>
+        </li>
+    </ul>
+{% endblock %}

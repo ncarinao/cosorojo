@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Negocio creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form.opc_nombre) }}
+        {{ form_label(form.opc_nombre, null) }}
+        {{ form_widget(form.id_negocio) }}
+        {{ form_label(form.id_negocio, }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('pers_negocio_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+
+
+{{ form_widget(form.name, { 'attr': {'class': 'validate','id':'name'}})}}
+{{ form_label(form.name, null, {'attr': {'for':'name'}})}}

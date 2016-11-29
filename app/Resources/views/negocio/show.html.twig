@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Negocio</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ negocio.id }}</td>
+            </tr>
+            <tr>
+                <th>Negnombre</th>
+                <td>{{ negocio.negNombre }}</td>
+            </tr>
+            <tr>
+                <th>Negdireccion</th>
+                <td>{{ negocio.negDireccion }}</td>
+            </tr>
+            <tr>
+                <th>Negtelefono</th>
+                <td>{{ negocio.negTelefono }}</td>
+            </tr>
+            <tr>
+                <th>Negfoto1</th>
+                <td>{{ negocio.negFoto1 }}</td>
+            </tr>
+            <tr>
+                <th>Negfoto2</th>
+                <td>{{ negocio.negFoto2 }}</td>
+            </tr>
+            <tr>
+                <th>Negurl</th>
+                <td>{{ negocio.negUrl }}</td>
+            </tr>
+            <tr>
+                <th>Negdescripcion</th>
+                <td>{{ negocio.negDescripcion }}</td>
+            </tr>
+            <tr>
+                <th>Negslug</th>
+                <td>{{ negocio.negSlug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pers_negocio_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pers_negocio_edit', { 'id': negocio.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

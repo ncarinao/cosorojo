@@ -360,7 +360,7 @@ class Negocio
     
 //---------------------------------------------------------
     public function __toString(){
-        return (string) $this->id." ".$this->negNombre;
+        return (string) $this->id;
     }
         
 }

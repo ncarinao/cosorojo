@@ -9,7 +9,7 @@ parameters:
     locale: es
 
 framework:
-    #esi:             ~
+    esi:             ~
     translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
