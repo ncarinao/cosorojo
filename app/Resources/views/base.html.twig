@@ -3,11 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            {#<link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />#}
+            {#<link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />#}
+            {#<link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />#}
+            {#<link rel="stylesheet"  href="{{ asset('assets/css/page-center.css') }}" />#}
+
+
+        {% endblock %}
     </head>
     <body>
+    {% include ':estructura:navbar.html.twig' %}
+
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script>
+            $(".button-collapse").sideNav();
+
+        </script>
+    {% endblock %}
     </body>
 </html>

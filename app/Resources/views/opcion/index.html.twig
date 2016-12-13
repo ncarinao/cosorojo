@@ -1,0 +1,92 @@
+{% block stylesheets %}
+
+    <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+    {#<link href="{{ asset('assets/css/page-center.css') }}" type="text/css" rel="stylesheet" media="screen,projection">#}
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="{{ asset('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+{% endblock %}
+{% block body %}
+<body class="cyana">
+
+    <div class="row">
+
+        <div class="col s12 offset-m1 m6 ">
+            {#<h1 class="center-align ">Crea tu negocio</h1>#}
+
+            <div id="login-page" class="row">
+                <div class="col s12 offset-s4 z-depth-4  card-panel  ">
+
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+                            <p class="center login-form-text">El coso rojo</p>
+                            <p class="center login-form-text"></p>
+                            <h6 >Lista de personas,canchas,etc. Y su tiempo de duracion</h6>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Opcnombre</th>
+                                    <th>Opctiempoturno</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for opcion in opcions %}
+                                    <tr>
+                                        <td>{{ opcion.opcNombre }}</td>
+                                        <td>{% if opcion.opcTiempoturno %}{{ opcion.opcTiempoturno|date('H:i:s') }}{% endif %}</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('pers_opcion_show', { 'id': opcion.id,'idnegocio':negocioid }) }}">Configurar opcion</a>
+                                                </li>
+                                                {#<li>#}
+                                                    {#<a href="{{ path('pers_opcion_edit', { 'id': opcion.id,'idnegocio':negocioid }) }}">edit</a>#}
+                                                {#</li>#}
+                                                <li>
+                                                    <a href="{{ path('pers_disponibilidad_new', { 'id': opcion.id,'idnegocio':negocioid }) }}">Cargar horarios</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s8 offset-s2">
+                                <a class="btn red col s12" href="{{ path('pers_opcion_new',{'idnegocio': negocioid }) }}">Cargar recurso</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="login-page" class="row">
+                <div class="col s12 offset-s4 z-depth-4  card-panel  ">
+                    <p class="center login-form-text">Una vez que ya cargo todos los datos precione Listo</p>
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2 ">
+                            <a class="btn blue col s12" href="{{ path('homepage') }}">Listo </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+{% endblock %}

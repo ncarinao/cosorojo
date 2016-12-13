@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <row>
+
+        <h3> Horarios mañana</h3>
+        <table class="striped">
+            <thead>
+            <tr>
+                <th data-field="id">Nombre de la peluqueria</th>
+                <th data-field="name">Nombre del peluquero</th>
+                <th data-field="price">horarios disponible</th>
+                <th data-field="price">Reservar</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for a in maniana %}
+
+                <tr>
+                    <td>{{ nombrenegocio }}</td>
+                    <td>{{ nombreopcion }}</td>
+                    <td> {{ a}}</td>
+                    {#<td><a class="red btn">Reservar</a>#}
+                    {#</td>#}
+                    <td><a class="red btn" href="{{ path('user_reserva_turno', { 'fecha': fecha , 'idopcion':idopcion,'hora':a,'nombreopcion':nombreopcion,'nombrenegocio':nombrenegocio}) }}">Reservar</a></td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        <h3> Horarios tarde</h3>
+
+        <table class="striped">
+            <thead>
+            <tr>
+                <th data-field="id">Nombre de la peluqueria</th>
+                <th data-field="name">Nombre del peluquero</th>
+                <th data-field="price">horarios disponible</th>
+                <th data-field="price">Reservar</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for b in tarde %}
+
+                <tr>
+                    <td>{{ nombrenegocio }}</td>
+                    <td>{{ nombreopcion }}</td>
+                    <td> {{ b}}</td>
+                    <td><a class="red btn">Reservar</a>
+                    </td>
+                    {#<td><a href="{{ path('admin_Students_show', { 'id': student.id }) }}">{{ student.id }}</a></td>#}
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </row>
+
+{% endblock %}
+
+

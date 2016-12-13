@@ -1,0 +1,101 @@
+{#{% extends 'base.html.twig' %}#}
+{% block stylesheets %}
+
+    <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+    {#<link href="{{ asset('assets/css/page-center.css') }}" type="text/css" rel="stylesheet" media="screen,projection">#}
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="{{ asset('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+{% endblock %}
+{% block body %}
+<body class="cyana">
+    <div class="row ">
+    {#col s6 offset-s2#}
+        <div class="col s12 offset-s6 m4 l8 ">
+
+            <div id="login-page" class="row">
+                {#col s12 offset-s1 z-depth-4 m6#}
+                <div class="  card-panel col s12 offset-l5 m4 l8 ">
+
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+                            <p class="center login-form-text">El coso rojo</p>
+                            <p class="center login-form-text"></p>
+                            <h5 >Estos son los datos de tu negocio</h5>
+
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="input-field col s12 m12 ">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Id</th>
+                                        <td>{{ negocio.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negnombre</th>
+                                        <td>{{ negocio.negNombre }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negdireccion</th>
+                                        <td>{{ negocio.negDireccion }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negtelefono</th>
+                                        <td>{{ negocio.negTelefono }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negfoto1</th>
+                                        <td>{{ negocio.negFoto1 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negfoto2</th>
+                                        <td>{{ negocio.negFoto2 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negurl</th>
+                                        <td>{{ negocio.negUrl }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negdescripcion</th>
+                                        <td>{{ negocio.negDescripcion }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Negslug</th>
+                                        <td>{{ negocio.negSlug }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <a class="btn blue col s12" href="{{ path('recurso',{'idnegocio': negocio.id }) }}">Siguiente</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <a class="btn red col s12" href="{{ path('pers_negocio_edit', { 'id': negocio.id }) }}">Editar</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            {{ form_start(delete_form) }}
+                            <input class="btn red col s12"type="submit" value="Eliminar">
+                            {{ form_end(delete_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

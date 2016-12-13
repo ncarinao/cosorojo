@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+        {% block stylesheets %}
+
+        {% endblock %}
+
+{% block body %}
+    <h4 class="header center">Lista de Recursos</h4>
+    <div class="divider"></div>
+    <div class="row ">
+        <div class="col s6 m8 offset-l1 l5">
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Opcnombre</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for opcion in opcions %}
+                    <tr>
+                        <td><a href="{{ path('pers_opcion_show', { 'id': opcion.id }) }}">{{ opcion.id }}</a></td>
+                        <td>{{ opcion.opcNombre }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('pers_opcion_show', { 'id': opcion.id }) }}">Ver</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('pers_opcion_edit', { 'id': opcion.id }) }}">editar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ negocio }}
+
+
+
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+    {% endblock %}
+{% endblock %}
+
+
+

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reserva</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reserva.id }}</td>
+            </tr>
+            <tr>
+                <th>Resfecha</th>
+                <td>{{ reserva.resFecha }}</td>
+            </tr>
+            <tr>
+                <th>Reshora</th>
+                <td>{% if reserva.resHora %}{{ reserva.resHora|date('H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_reserva_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_reserva_edit', { 'id': reserva.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

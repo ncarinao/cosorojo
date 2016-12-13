@@ -29,6 +29,13 @@ class Opcion
      */
     private $opcNombre;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="opc_Tiempoturno", type="time")
+     */
+    private $opcTiempoturno;
+
 
     /**
      * Get id
@@ -62,6 +69,30 @@ class Opcion
     public function getOpcNombre()
     {
         return $this->opcNombre;
+    }
+
+    /**
+     * Set opcTiempoturno
+     *
+     * @param \DateTime $opcTiempoturno
+     *
+     * @return Opcion
+     */
+    public function setOpcTiempoturno($opcTiempoturno)
+    {
+        $this->opcTiempoturno = $opcTiempoturno;
+
+        return $this;
+    }
+
+    /**
+     * Get opcTiempoturno
+     *
+     * @return  \DateTime
+     */
+    public function getOpcTiempoturno()
+    {
+        return $this->opcTiempoturno;
     }
 //    ---------------------------------------------------------------------------------------------------------
 

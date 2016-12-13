@@ -1,0 +1,86 @@
+{% block stylesheets %}
+
+    <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+    {#<link href="{{ asset('assets/css/page-center.css') }}" type="text/css" rel="stylesheet" media="screen,projection">#}
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="{{ asset('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+{% endblock %}
+{% block body %}
+<body class="cyana">
+
+    <div class="row">
+
+        <div class="col s12  m8 ">
+            {#<h1 class="center-align ">Crea tu negocio</h1>#}
+
+            <div id="login-page" class="row">
+                <div class="col s12 offset-s4 z-depth-4  card-panel  ">
+
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+                            <p class="center login-form-text">El coso rojo</p>
+                            <p class="center login-form-text"></p>
+                            <h5 >Lista de empleados,canchas,etc. y su tiempo de duracion</h5>
+
+                        </div>
+                    </div>
+                    {{ form_start(edit_form) }}
+
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            {{ form_label(edit_form.opcNombre, null, {'attr': {'for':'opcNombre','class':'center-align'}})}}
+                            {{ form_widget(edit_form.opcNombre, { 'attr': {'id':'opcNombre'}})}}
+                        </div>
+                    </div>
+                    <div style="display: none">
+                        {{ form_widget(edit_form.opciones, { 'attr': {'id':'opciones'}})}}
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            Actualize el tiempo de trabajo o de ocupacion, horas y minutos
+                            {#{{ form_label(form.opcTiempoturno, null, {'attr': {'for':'opcTiempoturno','class':'time'}})}}#}
+                            {{ form_widget(edit_form.opcTiempoturno, { 'attr': {'id':'opcTiempoturno'}})}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2 ">
+                            <input class="btn red col s12" type="submit" value="ACTUALIZAR DATOS" />
+                        </div>
+                    </div>
+                    {{ form_end(edit_form) }}
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2 ">
+                            <a class="btn red col s12" href="{{ path('recurso',{'idnegocio':idnegocio}) }}">Volver a la lista</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2 ">
+                            {{ form_start(delete_form) }}
+                            <input class="btn red col s12" type="submit" value="Eliminar">
+                            {{ form_end(delete_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</body>
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

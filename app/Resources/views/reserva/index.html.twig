@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Resfecha</th>
+                <th>Reshora</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserva in reservas %}
+            <tr>
+                <td><a href="{{ path('user_reserva_show', { 'id': reserva.id }) }}">{{ reserva.id }}</a></td>
+                {#<td>{{ reserva.resFecha }}</td>#}
+                <td>{% if reserva.resHora %}{{ reserva.resHora|date('H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_reserva_show', { 'id': reserva.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_reserva_edit', { 'id': reserva.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_reserva_new') }}">Create a new reserva</a>
+        </li>
+    </ul>
+{% endblock %}

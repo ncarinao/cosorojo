@@ -1,8 +1,91 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+        {#<div class="row">#}
+            {##}
+        {#</div>#}
+        <div class="input-field col s12 center">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+            <p class="center login-form-text">El coso rojo</p>
+        </div>
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        <div class="row">
+            <div class="input-field col s12 center">
+                <h4>Registracion</h4>
+                <p class="center">Únete a nuestra comunidad ahora!</p>
+            </div>
+        </div>
+
+        {{ form_widget(form) }}
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="btn red col s12" type="submit" value="{{ 'registration.submit'|trans }}" />
+
+            </div>
+            <div class="input-field col s12">
+                <p class="margin center medium-small sign-up">
+                    ¿Ya tienes una cuenta? <a href="{{ path('fos_user_security_login')}}">Entra</a></p>
+            </div>
+        </div>
+            <div>
+            </div>
+        {{ form_end(form) }}
     </div>
-{{ form_end(form) }}
+</div>
+
+
+{#<div id="login-page" class="row">#}
+    {#<div class="col s12 z-depth-4 card-panel">#}
+        {#<form class="login-form">#}
+            {#<div class="row">#}
+                {#<div class="input-field col s12 center">#}
+                    {#<h4>Register</h4>#}
+                    {#<p class="center">Join to our community now !</p>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row margin">#}
+                {#<div class="input-field col s12">#}
+                    {#<i class="mdi-social-person-outline prefix"></i>#}
+                    {#{{ form_widget(form.username, { 'attr': {'id':'username'}})}}#}
+                    {#{{ form_label(form.username, null, {'attr': {'for':'username','class':'center-align'}})}}#}
+
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row margin">#}
+                {#<div class="input-field col s12">#}
+                    {#<i class="mdi-communication-email prefix"></i>#}
+                    {#{{ form_widget(form.email, { 'attr': {'id':'email'}})}}#}
+                    {#{{ form_label(form.email, null, {'attr': {'for':'email','class':'center-align'}})}}#}
+
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row margin">#}
+                {#<div class="input-field col s12">#}
+                    {#<i class="mdi-action-lock-outline prefix"></i>#}
+                    {#{{ form_widget(form.plainPassword, { 'attr': {'id':'first_options'}})}}#}
+                    {#{{ form_label(form.plainPassword, null, {'attr': {'for':'first_options','class':'center-align'}})}}#}
+
+                    {#<input id="password" type="password">#}
+                    {#<label for="password">Password</label>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row margin">#}
+                {#<div class="input-field col s12">#}
+                    {#<i class="mdi-action-lock-outline prefix"></i>#}
+                    {#{{ form_widget(form.plainPassword, { 'attr': {'id':'first_options'}})}}#}
+                    {#{{ form_label(form.plainPassword, null, {'attr': {'for':'first_options','class':'center-align'}})}}#}
+
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row">#}
+                {#<div class="input-field col s12">#}
+                    {#<a href="index.html" class="btn waves-effect waves-light col s12">Register Now</a>#}
+                {#</div>#}
+                {#<div class="input-field col s12">#}
+                    {#<p class="margin center medium-small sign-up">Already have an account? <a href="page-login.html">Login</a></p>#}
+                {#</div>#}
+            {#</div>#}
+        {#</form>#}
+    {#</div>#}
+{#</div>#}

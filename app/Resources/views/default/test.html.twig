@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {#{{ user}}#}
+    {#{{fecha }}#}
+    {#{{ idopcion }}#}
+    {#{{ hora}}#}
+    {#{{ nombrenegocio }}#}
+    {#{{ nombreopcion }}#}
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre de usuario:</th>
+                <td>{{ username }}</td>
+            </tr>
+            <tr>
+                <th>En:</th>
+                <td>{{ nombrenegocio}}</td>
+            </tr>
+            <tr>
+                <th>Con:</th>
+                <td>{{ nombreopcion }}</td>
+            </tr>
+            <tr>
+                <th>EL dia:</th>
+                <td>{{ fecha }}</td>
+            </tr>
+            <tr>
+                <th>Hora:</th>
+                <td>{{ hora}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="red btn" href="">Cancelar turno</a>
+
+                    <a class="red btn" href="">Confirmar turno</a>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+{% endblock %}

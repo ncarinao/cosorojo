@@ -1,0 +1,154 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block body %}#}
+    {#<h1>Negocio edit</h1>#}
+
+    {#{{ form_start(edit_form) }}#}
+        {#{{ form_widget(edit_form) }}#}
+        {#<input type="submit" value="Edit" />#}
+    {#{{ form_end(edit_form) }}#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('pers_negocio_index') }}">Back to the list</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#{{ form_start(delete_form) }}#}
+                {#<input type="submit" value="Delete">#}
+            {#{{ form_end(delete_form) }}#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+{% block stylesheets %}
+
+    <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+    {#<link href="{{ asset('assets/css/page-center.css') }}" type="text/css" rel="stylesheet" media="screen,projection">#}
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="{{ asset('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+{% endblock %}
+{% block body %}
+    <body class="cyana">
+
+    <div class="row">
+        {{ form_start(edit_form) }}
+
+        <div class="col s12 offset-s8 m8 ">
+            {#<h1 class="center-align ">Crea tu negocio</h1>#}
+
+            <div id="login-page" class="row">
+                <div class="col s12 offset-s4 z-depth-4  card-panel  ">
+
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+                            <p class="center login-form-text">El coso rojo</p>
+                            <p class="center login-form-text"></p>
+                            <h5 >Llena los datos de tu negocio</h5>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            {{ form_label(edit_form.negNombre, null, {'attr': {'for':'negNombre','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negNombre, { 'attr': {'id':'negNombre'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            {{ form_label(edit_form.negDireccion, null, {'attr': {'for':'negDireccion','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negDireccion, { 'attr': {'id':'negDireccion'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form_label(edit_form.negTelefono, null, {'attr': {'for':'negTelefono','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negTelefono, { 'attr': {'id':'negTelefono'}})}}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form_label(edit_form.negFoto1, null, {'attr': {'for':'negFoto1','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negFoto1, { 'attr': {'id':'negFoto1'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            {{ form_label(edit_form.negFoto2, null, {'attr': {'for':'negFoto2','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negFoto2, { 'attr': {'id':'negFoto2'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            {{ form_label(edit_form.negUrl, null, {'attr': {'for':'negUrl','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negUrl, { 'attr': {'id':'negUrl'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form_label(edit_form.negDescripcion, null, {'attr': {'for':'negDescripcion','class':'center-align'}})}}
+                            {{ form_widget(edit_form.negDescripcion, { 'attr': {'id':'negDescripcion'}})}}
+                        </div>
+                    </div>
+                    <div style="display: none">
+                            {#{{ form_label(form.negSlug, null, {'attr': {'for':'negSlug','class':'center-align'}})}}#}
+                            {{ form_widget(edit_form.negSlug, { 'attr': {'id':'negSlug'}})}}
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            <h5>Seleccione su rubro</h5>
+                            {#{{ form_label(form.rubro, null, {'attr': {'for':'rubro','class':'center-align'}})}}#}
+                            {{ form_widget(edit_form.rubro, { 'attr': {'id':'rubro'}})}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <a class="btn blue col s12" href="{{ path('recurso',{'idnegocio': negocio.id }) }}">Siguiente</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <input class="btn red col s12" type="submit" value="Editar" />
+
+                        </div>
+                    </div>
+                    {{ form_end(edit_form) }}
+
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                                {{ form_start(delete_form) }}
+                                <input class="btn red col s12" type="submit" value="Eliminar">
+                                {{ form_end(delete_form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    </body>
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Negocios list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Negnombre</th>
+                <th>Negdireccion</th>
+                <th>Negtelefono</th>
+                <th>Negfoto1</th>
+                <th>Negfoto2</th>
+                <th>Negurl</th>
+                <th>Negdescripcion</th>
+                <th>Negslug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for negocio in negocios %}
+            <tr>
+                <td><a href="{{ path('pers_negocio_show', { 'id': negocio.id }) }}">{{ negocio.id }}</a></td>
+                <td>{{ negocio.negNombre }}</td>
+                <td>{{ negocio.negDireccion }}</td>
+                <td>{{ negocio.negTelefono }}</td>
+                <td>{{ negocio.negFoto1 }}</td>
+                <td>{{ negocio.negFoto2 }}</td>
+                <td>{{ negocio.negUrl }}</td>
+                <td>{{ negocio.negDescripcion }}</td>
+                <td>{{ negocio.negSlug }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pers_negocio_show', { 'id': negocio.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pers_negocio_edit', { 'id': negocio.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pers_opcion_new', { 'ide': negocio.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pers_negocio_new') }}">Create a new negocio</a>
+        </li>
+    </ul>
+{% endblock %}

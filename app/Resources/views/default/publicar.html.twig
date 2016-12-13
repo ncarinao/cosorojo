@@ -1,0 +1,43 @@
+{#{% extends 'base.html.twig' %}#}
+ {% block stylesheets %}
+     <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+     <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+     <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+     <link href="{{ asset('assets/css/page-center.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+     <link href="{{ asset('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+
+ {% endblock %}
+
+{% block body %}
+<body class="cyana">
+
+<div class="card-content">
+    <div class="row">
+        <div class="input-field col s12 center">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+            <p class="center login-form-text">El coso rojo</p>
+        </div>
+    </div>
+        <h3 class="center-align Trebuchet" > Seleccione  su rubro</h3>
+
+        <div class="card ">
+
+            <div class="col s6 m3">
+                {% for rubro in rubros %}
+
+                {#<h5>{{ rubro.rubNombre }}</h5>#}
+
+                        <a href="{{ path('pers_negocio_new',{ 'rubroID': rubro.id }) }}"><img src="{{ asset('assets/images/avatar.jpg') }}"></a>
+                {% endfor %}
+
+                </div>
+
+        </div>
+
+
+    </div>
+</body>
+{% endblock %}

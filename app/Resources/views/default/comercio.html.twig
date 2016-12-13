@@ -1,0 +1,242 @@
+{% extends 'base.html.twig' %}
+ {% block stylesheets %}
+     <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
+     <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
+     <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+     {#<link rel="stylesheet"  href="{{ asset('assets/css/page-center.css') }}" />#}
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+ {% endblock %}
+
+{% block body %}
+
+    <div class="row center">
+        <h1 class="header center">{{ negocios.negNombre }}</h1>
+    </div>
+
+    <div class="row center">
+        <img class="activator" src="{{ asset('assets/images/avatar.jpg') }}" alt="office">
+
+    </div>
+
+
+
+    <div class="divider"></div>
+    {#<div id="basic-card" class="section">#}
+        {#<h4 class="header center">Descripcion</h4>#}
+        {#<div class="row">#}
+            {#<div class="col s12 ">#}
+                {#<div class="row">#}
+                    {#<div class="col s12  ">#}
+                        {#<div class="card  white">#}
+                            {#<div class="card-content black-text center-align ">#}
+                                {#<span class="card-title">Card Title</span>#}
+                                {#<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>#}
+                            {#</div>#}
+                            {#<div class="card-action">#}
+                                {#<a href="#" class="lime-text text-accent-1">This is a link</a>#}
+                                {#<a href="#" class="lime-text text-accent-1">This is a link</a>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="divider"></div>#}
+
+    <div class="row">
+        <div class="col s12 m4 ">
+            <div class="icon-block">
+                <h2 class="center red-text "><i class="large material-icons">assignment</i></h2>
+                <h5 class="center">Quienes somos</h5>
+
+                <p class="light center">{{ negocios.negDescripcion }}</p>
+            </div>
+        </div>
+
+        <div class="col s12 m4 ">
+            <div class="icon-block">
+                <h2 class="center red-text "><i class=" large material-icons ">contacts</i></h2>
+                <h5 class="center">Contacto</h5>
+
+                <p class="light center"> Direccion:  {{ negocios.negDireccion }}<br> Telefono: {{ negocios.negTelefono }} <br> Email: Erica@gmail.com </p>
+            </div>
+        </div>
+
+        <div class="col s12 m4 ">
+            <div class="icon-block">
+                <h2 class="center  red-text  "><i class=" large material-icons">supervisor_account</i></h2>
+                <h5 class="center">Personal</h5>
+                <p class="light center">
+                {% set cont = 0 %}
+                {% for a in recursos %}
+                    {% set cont = cont+1%}
+                    <li class="light center">
+
+                        <ul>
+                            {{ a.opcNombre }}
+
+                        </ul>
+                    </li>
+                {% endfor %}
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div id="basic-card" class="section">
+    <div class="row">
+        <h4 class="header center">Reserva tu turno</h4>
+        <div class="row">
+            <div class="col s10  offset-l3  m4 ">
+                <div class="row">
+                    <div class="col s12  offset-l4  m10 ">
+                        <div class="card  white ">
+                                <form class="login-form" action="{{ path("seleccion_turno") }}" method="post">
+
+
+                                <div class="row margin ">
+                                    <div class="input-field col s12 divsRadios">
+                                        <p class="center login-form-text">Seleccione su peluquero</p>
+                                        <input name="nombrenegocio"  type="hidden" value="{{ negocios.negNombre }}" >
+
+                                        {% set cont = 0 %}
+                                        {% for a in recursos %}
+                                            {% set cont = cont+1%}
+
+                                            <input name="group1" type="radio" value="{{ a.id}}" id="{{ cont}}" />
+                                            <label for="{{cont }}">{{ a.opcNombre }}</label>
+
+                                                {#<input name="nombreopcion" id="{{ cont}}" type="hidden" value="{{ a.opcNombre}}" >#}
+
+                                            <br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row margin">
+                                    <div class="input-field col s12">
+                                        <p class="center login-form-text">Seleccione la fecha</p>
+                                        <input name="negocioID" id="search" type="hidden" value="{{ negocios.id }}" >
+
+                                        <input name="search" id="search" type="date" class="datepicker">
+                                        <label for="search"><i class="material-icons">search</i></label>
+
+                                    </div>
+                                </div>
+                                <div class="row margin">
+                                    <div class="input-field col s12">
+                                        <label>Horario</label>
+                                        <div class="select-wrapper"><i class="mdi-navigation-arrow-drop-down active"></i><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" value="Choose your option"><ul id="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" class="dropdown-content select-dropdown" style="width: 777px; position: absolute; top: 0px; left: 0px; opacity: 1; display: none;"><li class="disabled active"><span>Choose your option</span></li><li class=""><span>Option 1</span></li><li class=""><span>Option 2</span></li><li class=""><span>Option 3</span></li></ul><select class="initialized">
+                                                <option value="" disabled="" selected="">Selecciona</option>
+                                                <option value="1">08:00 - 09:00</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input class="btn red col s12" type="submit" id="_submit" name="_submit" value="Buscar turno" />
+
+                                        {#<input class="btn red col s12" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button value="esto es un boton" onclick="hacer_click()"/>
+
+
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js') }}"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+        <script src="{{ asset('assets/js/materialize.js') }}"></script>
+        <script type="text/javascript">
+            $('.datepicker').pickadate({
+                min: new Date(),
+                labelMonthNext: 'Mes siguiente',
+                labelMonthPrev: 'Mes anterior',
+                labelMonthSelect: 'Selecciona un mes',
+                labelYearSelect: 'Selecciona un año',
+                format: 'yyyy-mm-dd',
+                monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+                monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+                weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ],
+                weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+                weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+                today: 'Hoy',
+                clear: 'Limpiar',
+                close: 'Cerrar',
+//                closeOnSelect: false,
+//                closeOnClear: false,
+                selectMonths: true, // Creates a dropdown to control month
+
+//                closeOnClear: false,
+//                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15// Creates a dropdown of 15 years to control year
+//                closeOnSelect: false,
+
+            });
+
+
+        </script>
+        <script>
+            function hacer_click()
+
+
+            {
+                var fecha = $('.datepicker.picker__input').val();
+                var recurso = $('.divsRadios [type="radio"]:checked').val();
+                $.ajax({
+                    type: "POST",
+//                        dataType: "json",
+//                    url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",
+                    url: "{{ path('seleccion_turno') }}",
+                    data: { fecha: fecha, recurso: recurso}
+
+                })
+                alert("Me haz dado un click"+fecha+recurso );
+
+            }
+
+        </script>
+        {#<script>#}
+            			{#$(document).on("ready", function(){#}
+                				{#loadData();#}
+                			{#});#}
+
+                    			{#var loadData = function(){#}
+                        				{#$.ajax({#}
+                                					{#type:"POST",#}
+                                            {#url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",#}
+
+{#//                                            url:"Users.php"#}
+                        				{#}).done(function(data){#}
+                            					{#console.log(data);#}
+{#//                            					var users = JSON.parse(data);#}
+{#//                            					for(var i in users){#}
+{#//                                						$("#content").append(users[ i ].usuario + " " + users[ i ].nombres + "<br>");#}
+{#//                                					}#}
+                            				{#});#}
+                        			{#}#}
+
+                    		{#</script>#}
+    {% endblock %}
+
+
+{% endblock %}
+
