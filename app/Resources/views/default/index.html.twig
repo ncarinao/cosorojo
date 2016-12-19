@@ -9,6 +9,8 @@
         {% endblock %}
 
 {% block body %}
+    <div id="espacio"></div>
+
     <h4 class="header center">Rubros</h4>
     <div class="divider"></div>
 
@@ -34,13 +36,12 @@
                                 <div class="card z-depth-2">
 
                                     <div class="card-image waves-effect waves-block waves-light">
-                                        <img class="activator" src="{{ asset('assets/images/avatar.jpg') }}" alt="office">
+                                        <img class="activator" src="{{asset('assets/images/'~rubro.rubFoto)}}" alt="office">
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title activator grey-text text-darken-4">{{ rubro.rubNombre }}<i class="mdi-navigation-more-vert right"></i></span>
                                         <p>
                                             <a href="{{ path('general_rubro', { 'rubroID': rubro.id }) }}">Entrar</a>
-
                                         </p>
 
                                     </div>

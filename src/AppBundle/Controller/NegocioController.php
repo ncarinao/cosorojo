@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Personal;
 use AppBundle\Entity\Negocio;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -54,7 +56,24 @@ class NegocioController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($negocio);
             $em->flush($negocio);
-            $negocio->getId();
+
+
+
+//            $idnegocio=( int )$negocio->getId();
+//            $userid = ( int )$this->getUser()->getId();
+////            echo $userid;
+////            exit();
+//
+//            $personal = new Personal();
+//            $personal->setNegocio(1);
+//            $personal->setUser(3);
+//
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($personal);
+//            $em->flush();
+//
+
+
 //            $userid = $this->getUser()->getId();
 //            $personal =   $product = $this->getDoctrine()
 //                ->getRepository('AppBundle:Personal');
@@ -94,6 +113,7 @@ class NegocioController extends Controller
 
             return $this->redirectToRoute('pers_negocio_show', array('id' => $negocio->getId()));
         }
+
 //        $opcion =   $product = $this->getDoctrine()
 //            ->getRepository('AppBundle:Rubro')
 //            ->find($rubroId);

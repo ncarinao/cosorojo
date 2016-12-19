@@ -84,7 +84,8 @@ class GeneneralController extends Controller
      */
     public function seleccionturno(Request $request)
     {
-//        $fecha = $request->request->get('search');
+        echo 'bbb';
+            //        $fecha = $request->request->get('search');
         $fecha = $request->request->get('fecha');
 
        
@@ -92,10 +93,10 @@ class GeneneralController extends Controller
 //        $usuario=$request->request->get('group1');
         $usuario=$request->request->get('recurso');
 
-        $negocioID=$request->request->get('negocioID');
-        $nombrenegocio=$request->request->get('nombrenegocio');
-//        echo $text;
-//        exit();
+//        $negocioID=$request->request->get('negocioID');
+//        $nombrenegocio=$request->request->get('nombrenegocio');
+        echo $fecha;
+        exit();
 
 
         $dias = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');

@@ -42,10 +42,11 @@
 </ul>
 <div class="navbar-fixed col s12 m4 l8 " id="mobile-collapse-button">
     <nav class="red darken-4 ">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper ">
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
-            <a href="#!" class="brand-logo">Logo</a>
+                <a id="center"  href="{{ path('homepage') }}" class="brand-logo col s6 "><img src="{{ asset('assets/images/logo.png') }}" alt=""></a>
+            
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ path('pers_negocio_new') }}">Publicar</a></li>
                 {#<li><a href="">Mi Dispositivo</a></li>#}

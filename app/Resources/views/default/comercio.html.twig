@@ -10,6 +10,7 @@
  {% endblock %}
 
 {% block body %}
+    <div id="espacio"></div>
 
     <div class="row center">
         <h1 class="header center">{{ negocios.negNombre }}</h1>
@@ -93,7 +94,7 @@
             <div class="col s10  offset-l3  m4 ">
                 <div class="row">
                     <div class="col s12  offset-l4  m10 ">
-                        <div class="card  white ">
+                        <div class=" ">
                                 <form class="login-form" action="{{ path("seleccion_turno") }}" method="post">
 
 
@@ -129,8 +130,8 @@
                                 </div>
                                 <div class="row margin">
                                     <div class="input-field col s12">
-                                        <label>Horario</label>
-                                        <div class="select-wrapper"><i class="mdi-navigation-arrow-drop-down active"></i><input type="text" class="select-dropdown" readonly="true" data-activates="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" value="Choose your option"><ul id="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" class="dropdown-content select-dropdown" style="width: 777px; position: absolute; top: 0px; left: 0px; opacity: 1; display: none;"><li class="disabled active"><span>Choose your option</span></li><li class=""><span>Option 1</span></li><li class=""><span>Option 2</span></li><li class=""><span>Option 3</span></li></ul><select class="initialized">
+                                        {#<label>Horario</label>#}
+                                        <div class="select-wrapper"><i class="mdi-navigation-arrow-drop-down active"></i><ul id="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" class="dropdown-content select-dropdown" style="width: 777px; position: absolute; top: 0px; left: 0px; opacity: 1; display: none;"><li class="disabled active"><span>Choose your option</span></li><li class=""><span>Option 1</span></li><li class=""><span>Option 2</span></li><li class=""><span>Option 3</span></li></ul><select class="initialized">
                                                 <option value="" disabled="" selected="">Selecciona</option>
                                                 <option value="1">08:00 - 09:00</option>
                                                 <option value="2">Option 2</option>
@@ -155,7 +156,9 @@
         </div>
     </div>
 </div>
+<div id="view">
 
+</div>
 <button value="esto es un boton" onclick="hacer_click()"/>
 
 
@@ -181,39 +184,55 @@
                 today: 'Hoy',
                 clear: 'Limpiar',
                 close: 'Cerrar',
-//                closeOnSelect: false,
+                closeOnSelect: true,
 //                closeOnClear: false,
                 selectMonths: true, // Creates a dropdown to control month
 
 //                closeOnClear: false,
 //                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15// Creates a dropdown of 15 years to control year
-//                closeOnSelect: false,
+                selectYears: 15,// Creates a dropdown of 15 years to control year
 
+                onClose: function() {
+
+                    var fecha = $('.datepicker.picker__input').val();
+                    var recurso = $('.divsRadios [type="radio"]:checked').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path ("seleccion_turno") }}",
+                        data: { fecha: fecha, recurso: recurso}
+                    })
+
+
+                }
+
+            });
+            $(document).ready(function() {
+                $('select').material_select();
             });
 
 
-        </script>
-        <script>
-            function hacer_click()
-
-
-            {
-                var fecha = $('.datepicker.picker__input').val();
-                var recurso = $('.divsRadios [type="radio"]:checked').val();
-                $.ajax({
-                    type: "POST",
-//                        dataType: "json",
-//                    url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",
-                    url: "{{ path('seleccion_turno') }}",
-                    data: { fecha: fecha, recurso: recurso}
-
-                })
-                alert("Me haz dado un click"+fecha+recurso );
-
-            }
 
         </script>
+        {#<script>#}
+            {#function hacer_click()#}
+
+
+            {#{#}
+                {#var fecha = $('.datepicker.picker__input').val();#}
+                {#var recurso = $('.divsRadios [type="radio"]:checked').val();#}
+                {#$.ajax({#}
+                    {#type: "POST",#}
+{#//                        dataType: "json",#}
+{#//                    url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",#}
+                    {#url: "{{ path('seleccion_turno') }}",#}
+                    {#data: { fecha: fecha, recurso: recurso}#}
+
+                {#})#}
+                {#alert("Me haz dado un click"+fecha+recurso );#}
+
+            {#}#}
+
+        {#</script>#}
         {#<script>#}
             			{#$(document).on("ready", function(){#}
                 				{#loadData();#}
