@@ -36,12 +36,12 @@
                                 <div class="card z-depth-2">
 
                                     <div class="card-image waves-effect waves-block waves-light">
-                                        <img class="activator" src="{{asset('assets/images/'~rubro.rubFoto)}}" alt="office">
+                                        <a href="{{ path('general_rubro', { 'rubroID': rubro.id }) }}"><img class="activator" src="{{asset('assets/images/'~rubro.rubFoto)}}" alt="office"></a>
                                     </div>
-                                    <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4">{{ rubro.rubNombre }}<i class="mdi-navigation-more-vert right"></i></span>
-                                        <p>
-                                            <a href="{{ path('general_rubro', { 'rubroID': rubro.id }) }}">Entrar</a>
+                                    <div class="card-content center">
+                                        <span class="card-title activator grey-text text-darken-4">{{ rubro.rubNombre }}</span>
+                                        <p class="center">
+                                            <a class="waves-effect waves-light btn" href="{{ path('general_rubro', { 'rubroID': rubro.id }) }}">Entrar</a>
                                         </p>
 
                                     </div>

@@ -29,17 +29,21 @@
                                         {#<th>Id</th>#}
                                         <th>Fecha</th>
                                         <th>Hora</th>
+                                        <th>Nombre de recurso</th>
                                         <th>Cancelar</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for reserva in turnos %}
                                         <tr>
+
                                             {#<td><a href="{{ path('user_reserva_show', { 'id': reserva.id }) }}">{{ reserva.id }}</a></td>#}
                                             {#<td>{{ reserva.resFecha }}</td>#}
                                             <td>{% if reserva.resFecha %}{{ reserva.resFecha|date('d-m-y') }}{% endif %}</td>
 
                                             <td>{% if reserva.resHora %}{{ reserva.resHora|date('H:i:s') }}{% endif %}</td>
+                                            <td>{{ reserva.opcion }}</td>
+
                                             <td>
                                                 <ul>
                                                     <li>

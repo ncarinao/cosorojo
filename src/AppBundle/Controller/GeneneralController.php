@@ -84,20 +84,20 @@ class GeneneralController extends Controller
      */
     public function seleccionturno(Request $request)
     {
-        echo 'bbb';
-            //        $fecha = $request->request->get('search');
+
+
         $fecha = $request->request->get('fecha');
+        $usuario = $request->request->get('recurso');
 
        
 
 //        $usuario=$request->request->get('group1');
-        $usuario=$request->request->get('recurso');
+
 
 //        $negocioID=$request->request->get('negocioID');
 //        $nombrenegocio=$request->request->get('nombrenegocio');
-        echo $fecha;
-        exit();
 
+        //$fecha = $request->request->get('search');
 
         $dias = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
         $dia = $dias[date('N', strtotime($fecha))];
@@ -223,5 +223,21 @@ class GeneneralController extends Controller
 
         return new JsonResponse($horariosmaniana);
     }
- 
+
+    /**
+     * Displays a form to edit an existing Students entity.
+     *
+     * @Route("/andara", name="andara")
+     * @Method({"GET", "POST"})
+     */
+    public function seleccion(Request $request)
+    {
+
+        $fecha = $request->request->get('fecha');
+        $usuario = $request->request->get('recurso');
+
+        $h = array('horas'=>array('08:00', '09:00', '10:00', '11:00', '12:00'));
+        return new JsonResponse($h);
+
+    }
 }

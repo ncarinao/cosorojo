@@ -1,6 +1,29 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+
+        <div class="row">
+            <div class="input-field col s12 center">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="" class="circle responsive-img valign profile-image-login">
+                <p class="center login-form-text">El coso rojo</p>
+            </div>
+        </div>
+
+
+        <div class="row margin">
+            <div class="input-field col s12">
+                <div class="fos_user_user_show">
+                    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <a href="{{ path('homepage') }}" class="btn red col s6 offset-s3">Continuar</a>
+            </div>
+        </div>
+
+    </div>
 </div>
