@@ -217,13 +217,12 @@ class ReservaController extends Controller
 
     {
         $userid = $this->getUser()->getId();
-
         $em = $this->getDoctrine()->getManager();
 
         $turnos = $em->getRepository('AppBundle:Reserva')->findByuser($userid);
 
-//        $opcion=$turnos['resHora']->getData();
-//        var_dump($turnos);
+//        $h=$turnos->getopcion(1);
+//        var_dump($h);
 //        exit();
 
         return $this->render('default/misturnos.html.twig', array(

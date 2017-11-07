@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
- {% block stylesheets %}
-     <link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />
-     <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />
-     <link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />
+ {#{% block stylesheets %}#}
+     {#<link rel="stylesheet"  href="{{ asset('assets/css/materialize.css') }}" />#}
+     {#<link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}" />#}
+     {#<link rel="stylesheet"  href="{{ asset('assets/css/prism.css') }}" />#}
      {#<link rel="stylesheet"  href="{{ asset('assets/css/page-center.css') }}" />#}
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     {#<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">#}
 
 
- {% endblock %}
+ {#{% endblock %}#}
 
 {% block body %}
     <div id="espacio"></div>
@@ -17,13 +17,103 @@
     </div>
 
     <div class="row center">
-        <img class="activator" src="{{ asset('assets/images/avatar.jpg') }}" alt="office">
+        <img width="500" class="activator" src="{{ asset('uploads/'~negocios.negfoto1) }}" alt="office">
 
     </div>
 
 
 
     <div class="divider"></div>
+    <div id="basic-card" class="section">
+        <div class="row">
+            <h4 class="header center">Reserva tu turno</h4>
+            <div class="row">
+                <div class="col s10  offset-l3  m5 ">
+                    <div class="row">
+                        <div class="col s12  offset-l4  m10 ">
+                            <div class=" ">
+                                <form class="login-form" action="{{ path("seleccion_turno") }}" method="post">
+
+
+                                    <div class="row margin ">
+                                        <div class="input-field col s12 divsRadios">
+                                            <p class="center login-form-text">Seleccione </p>
+                                            <input name="nombrenegocio"  type="hidden" value="{{ negocios.negNombre }}" >
+                                            <input name="idrecurso"  type="text" class="mirecurso" value="" >
+
+                                            {#{% set cont = 0 %}#}
+                                            {#{% for a in recursos %}#}
+                                            {#{% set cont = cont+1%}#}
+                                                {#<div class="input-field col s12">#}
+                                                {#<select>#}
+                                                {#<option value="" disabled selected>Choose your option</option>#}
+                                                {#<option value="{{ a.id}}">{{ a.opcNombre }}</option>#}
+
+                                                {#</select>#}
+                                                {#<label>Materialize Select</label>#}
+                                                {#</div>#}
+                                                {#<input name="group1" type="radio" value="{{ a.id}}" id="{{ cont}}" />#}
+                                                {#<label for="{{cont }}">{{ a.opcNombre }}</label>#}
+
+                                                {#<input name="nombreopcion" id="{{ cont}}" type="hidden" value="{{ a.opcNombre}}" >#}
+                                                {#<br>#}
+                                            {#{% endfor %}#}
+                                            {#{% set cont = 0 %}#}
+                                            {#<div class="input-field col s12">#}
+                                                {#<select>#}
+                                                    {#<option value="" disabled selected> </option>#}
+
+                                                    {#{% for a in recursos %}#}
+                                                        {#{% set cont = cont+1%}#}
+
+                                                        {#<option value="{{ a.id}}" data-mi-id="{{ a.id}}">{{ a.opcNombre }}</option>#}
+
+                                                        {#<br>#}
+                                                    {#{% endfor %}#}
+                                                {#</select>#}
+                                            {#</div>#}
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row margin">
+                                        <div class="input-field col s12">
+                                            <p class="center login-form-text">Seleccione la fecha</p>
+                                            <input name="negocioID" id="search" type="hidden" value="{{ negocios.id }}" >
+
+                                            <input name="search" id="search" type="date" class="datepicker center">
+                                            <label for="search"><i class="material-icons">search</i></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="row margin">
+                                        <div class="input-field col s12">
+                                            <select  id="selEstadosMateria">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                            </select>
+                                            <label>Materialize Select</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input class="btn red col s12" type="submit" id="_submit" name="_submit" value="Confirmar turno" />
+
+                                            {#<input class="btn red col s12" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <select name="datas" id="datas"></select>
     {#<div id="basic-card" class="section">#}
         {#<h4 class="header center">Descripcion</h4>#}
         {#<div class="row">#}
@@ -46,6 +136,7 @@
         {#</div>#}
     {#</div>#}
     {#<div class="divider"></div>#}
+        <div class="divider"></div>
 
     <div class="row">
         <div class="col s12 m4 ">
@@ -87,79 +178,10 @@
             </div>
         </div>
     </div>
-    <div id="basic-card" class="section">
-    <div class="row">
-        <h4 class="header center">Reserva tu turno</h4>
-        <div class="row">
-            <div class="col s10  offset-l3  m4 ">
-                <div class="row">
-                    <div class="col s12  offset-l4  m10 ">
-                        <div class=" ">
-                                <form class="login-form" action="{{ path("seleccion_turno") }}" method="post">
-
-
-                                <div class="row margin ">
-                                    <div class="input-field col s12 divsRadios">
-                                        <p class="center login-form-text">Seleccione su peluquero</p>
-                                        <input name="nombrenegocio"  type="hidden" value="{{ negocios.negNombre }}" >
-
-                                        {% set cont = 0 %}
-                                        {% for a in recursos %}
-                                            {% set cont = cont+1%}
-
-                                            <input name="group1" type="radio" value="{{ a.id}}" id="{{ cont}}" />
-                                            <label for="{{cont }}">{{ a.opcNombre }}</label>
-
-                                                {#<input name="nombreopcion" id="{{ cont}}" type="hidden" value="{{ a.opcNombre}}" >#}
-
-                                            <br>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <br>
-                                <br>
-                                <div class="row margin">
-                                    <div class="input-field col s12">
-                                        <p class="center login-form-text">Seleccione la fecha</p>
-                                        <input name="negocioID" id="search" type="hidden" value="{{ negocios.id }}" >
-
-                                        <input name="search" id="search" type="date" class="datepicker">
-                                        <label for="search"><i class="material-icons">search</i></label>
-
-                                    </div>
-                                </div>
-                                <div class="row margin">
-                                    <div class="input-field col s12">
-                                        {#<label>Horario</label>#}
-                                        <div class="select-wrapper"><i class="mdi-navigation-arrow-drop-down active"></i><ul id="select-options-a40e7557-cbc3-e114-9817-047aa5de7681" class="dropdown-content select-dropdown" style="width: 777px; position: absolute; top: 0px; left: 0px; opacity: 1; display: none;"><li class="disabled active"><span>Choose your option</span></li><li class=""><span>Option 1</span></li><li class=""><span>Option 2</span></li><li class=""><span>Option 3</span></li></ul><select class="initialized">
-                                                <option value="" disabled="" selected="">Selecciona</option>
-                                                <option value="1">08:00 - 09:00</option>
-                                                <option value="2">Option 2</option>
-                                                <option value="3">Option 3</option>
-                                            </select></div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input class="btn red col s12" type="submit" id="_submit" name="_submit" value="Buscar turno" />
-
-                                        {#<input class="btn red col s12" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="view">
 
 </div>
-<button value="esto es un boton" onclick="hacer_click()"/>
+
+{#<button value="esto es un boton" onclick="hacer_click()"/>#}
 
 
 
@@ -183,7 +205,7 @@
                 weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
                 today: 'Hoy',
                 clear: 'Limpiar',
-                close: 'Cerrar',
+                close: 'ok',
                 closeOnSelect: true,
 //                closeOnClear: false,
                 selectMonths: true, // Creates a dropdown to control month
@@ -195,12 +217,74 @@
                 onClose: function() {
 
                     var fecha = $('.datepicker.picker__input').val();
-                    var recurso = $('.divsRadios [type="radio"]:checked').val();
+                    var recurso = $('.mirecurso').val();
+
+//                    var recurso = $('.divsRadios [type="radio"]:checked').val();
+                    console.log(fecha)
+                    console.log(recurso)
                     $.ajax({
                         type: "POST",
-                        url: "{{ path ("seleccion_turno") }}",
+                        url: "{{ path ("andara") }}",
                         data: { fecha: fecha, recurso: recurso}
-                    })
+                    }).done(function (data){
+                        /*ejecutar las siguientes instrucciones
+                         * al terminar de ejecutar la llamada
+                         * ajax*/
+
+                        //convertir el objeto JSON a texto
+                        var json_string = JSON.stringify(data);
+
+                        //convertir el texto a un nuevo objeto
+                        var obj = $.parseJSON(json_string);
+
+                        var horas = obj.horas;
+                        var list = $('.dropdown-content.select-dropdown');
+//                        list.empty();
+//
+//                        console.log(json_string);
+//                        console.log(obj);
+//
+//                        $.each(horas,function(key, value) {
+//                            console.log("value: "+value);
+//
+//
+//                            list.append('<li class=""><span>'+value+'</span></li>')
+//
+//
+//                        });
+
+//                        $.each(horas,function(key, value) {
+//                            console.log("value: "+value);
+//
+//
+//                            list.append('<select class="initialized" id="selEstadosMateria"><option value="'+value+'">'+value+'</option></select>')
+//
+//                        });
+
+
+
+                        /*asignar los valores obtenidos del objeto
+                         * a cada unos de losc controlres deseados
+                         * en el formulario*/
+
+                        console.log(json_string);
+                        console.log(obj)
+
+                        html = "";
+                        obj = {
+                            "1" : "Name",
+                            "2": "Ageee",
+                            "3" : "Gender"
+                        }
+                        for(var key in obj) {
+                            html += "<option value=" + key  + ">" +obj[key] + "</option>"
+                        }
+                        document.getElementById("datas").innerHTML = html;
+
+
+
+
+                    });
 
 
                 }
@@ -211,49 +295,12 @@
             });
 
 
+        </script>
+        <script>
+
 
         </script>
-        {#<script>#}
-            {#function hacer_click()#}
 
-
-            {#{#}
-                {#var fecha = $('.datepicker.picker__input').val();#}
-                {#var recurso = $('.divsRadios [type="radio"]:checked').val();#}
-                {#$.ajax({#}
-                    {#type: "POST",#}
-{#//                        dataType: "json",#}
-{#//                    url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",#}
-                    {#url: "{{ path('seleccion_turno') }}",#}
-                    {#data: { fecha: fecha, recurso: recurso}#}
-
-                {#})#}
-                {#alert("Me haz dado un click"+fecha+recurso );#}
-
-            {#}#}
-
-        {#</script>#}
-        {#<script>#}
-            			{#$(document).on("ready", function(){#}
-                				{#loadData();#}
-                			{#});#}
-
-                    			{#var loadData = function(){#}
-                        				{#$.ajax({#}
-                                					{#type:"POST",#}
-                                            {#url:"http://127.0.0.1:8000/app_dev.php/negocio/comercio/1",#}
-
-{#//                                            url:"Users.php"#}
-                        				{#}).done(function(data){#}
-                            					{#console.log(data);#}
-{#//                            					var users = JSON.parse(data);#}
-{#//                            					for(var i in users){#}
-{#//                                						$("#content").append(users[ i ].usuario + " " + users[ i ].nombres + "<br>");#}
-{#//                                					}#}
-                            				{#});#}
-                        			{#}#}
-
-                    		{#</script>#}
     {% endblock %}
 
 
